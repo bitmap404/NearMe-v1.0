@@ -1,0 +1,35 @@
+/* NearMe bilingual language switch · Gradient Modern Nightlife */
+.nearme-language{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid rgba(241,184,255,.4);border-radius:12px;background:rgba(43,20,78,.88);color:#F8F2FF;white-space:nowrap;font-family:inherit;max-width:175px;box-sizing:border-box}
+.nearme-language-caption{font-size:13px;line-height:1}
+.nearme-language select{min-width:0;max-width:135px;color:#F8F2FF;background:transparent;border:0;outline:0;font-family:inherit;font-size:12px;font-weight:600;line-height:1.4;cursor:pointer;appearance:auto}
+.nearme-language select option{background:#211238;color:#F8F2FF}
+.nearme-language:focus-within{outline:2px solid #FF5CBD;outline-offset:2px}
+.nearme-login-language{display:flex;justify-content:flex-end;width:100%;margin-bottom:8px}
+.nearme-locked-language{position:absolute;right:16px;top:16px;z-index:2}
+.nearme-privacy-language{display:flex;justify-content:flex-end;margin:0 0 18px}
+@media(max-width:480px){.topbar-right{gap:6px!important}.topbar-right .nearme-language{padding:4px 5px;max-width:116px}.topbar-right .nearme-language select{font-size:11px;max-width:87px}.workspace-header .nearme-language{margin-bottom:6px}}
+/* Keep language and staff shortcuts reachable on compact Telegram WebViews. */
+@media (max-width:540px){
+  .topbar{height:auto;min-height:82px;flex-wrap:wrap;row-gap:8px;align-items:center}
+  .topbar-right{flex:1;min-width:155px;justify-content:flex-end;flex-wrap:wrap;row-gap:6px}
+  .topbar-right .nearme-language{max-width:130px}
+  .workspace-header .header-actions{flex-wrap:wrap;gap:8px}
+}
+html[lang="zh-CN"] body,
+html[lang="zh-CN"] input,
+html[lang="zh-CN"] select,
+html[lang="zh-CN"] button,
+html[lang="zh-CN"] textarea{
+  font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC","Hiragino Sans GB","DM Sans",sans-serif;
+}
+
+/* Discover header: keep language immediately to the left of the account avatar. */
+.nearme-profile-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:7px;flex-shrink:0}
+.nearme-profile-actions .avatar{flex:none}
+.nearme-profile-actions .nearme-language{flex:none}
+.nearme-profile-actions [hidden]{display:none!important}
+@media(max-width:380px){
+  .nearme-profile-actions{gap:5px}
+  .nearme-profile-actions .nearme-language{padding:5px 6px;max-width:125px}
+  .nearme-profile-actions .nearme-language select{font-size:11px;max-width:92px}
+}

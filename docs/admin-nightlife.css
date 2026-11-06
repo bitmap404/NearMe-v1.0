@@ -1,0 +1,91 @@
+/* Concept C / Gradient Modern Nightlife — NearMe Design Studio & Shop Manager */
+:root{--admin-bg:#100a24;--admin-panel:#211337;--admin-border:#694084;--admin-ink:#f7eaff;--admin-muted:#c5aed9;--admin-pink:#ff5cbd;--admin-violet:#a32cdb;--admin-gradient:linear-gradient(105deg,#ff4f8f,#e636bc 46%,#883cf5);color-scheme:dark;background:var(--admin-bg);color:var(--admin-ink)}
+body{background:radial-gradient(ellipse 80% 430px at 50% -180px,#4c1a74,transparent),var(--admin-bg);color:var(--admin-ink)}
+.locked{background:radial-gradient(circle at 50% 14%,#532178,transparent 68%),#100a24;color:#f8efff}
+.lock-icon{color:#ff91e6}
+.gate-help{border-color:#8744a7;background:#281640;color:#e1c6ed}
+.sidebar{background:linear-gradient(170deg,#210e43,#160b32 85%);border-right:1px solid #7e38ab}
+.brand-icon{background:var(--admin-gradient);color:white;box-shadow:0 5px 20px #d342b97a}
+.brand-light{color:#ff87d8}
+.brand small,.side-label{color:#c48de1}
+.nav-link{color:#cdb3e4}
+.nav-link:hover{background:#4c1a71;color:#fff}
+.nav-link.active{background:var(--admin-gradient);color:#fff;box-shadow:0 6px 20px #e847bf55}
+.side-bottom,.side-bottom small{color:#ddc7ef}
+.online-dot{background:#ff71cf}
+.workspace-header h1,.workspace h1,.panel-title h2,.shop-head h2{color:#fff}
+.workspace-header p,.panel-title p,.shop-head p{color:var(--admin-muted)}
+.kicker,.sparkle{color:#ee82dc}
+.state-chip{color:#cbaee0}
+.save-button,.shop-manager .save-button{background:var(--admin-gradient);color:#fff;box-shadow:0 6px 20px #db2dab44;border:1px solid #f48bd6}
+.editor-panel,.shop-list,.shop-form{background:linear-gradient(145deg,#2a1748,#1c1138);border:1px solid #6c3688;box-shadow:0 9px 30px #10062166;color:var(--admin-ink)}
+.panel-icon{background:linear-gradient(120deg,#7132ae,#d23faf);color:white}
+.field,.shop-fields .field span{color:#f4dbfa}
+.field input,.field textarea,.field select,
+.shop-fields input:not([type=checkbox]),.shop-fields select,.shop-fields textarea{
+ background:#170e2b;border:1px solid #754599;color:#fff;box-shadow:none
+}
+.field :is(input,textarea,select):focus,.shop-fields :is(input,textarea,select):focus{outline:2px solid #ff79cf;outline-offset:1px;border-color:#ee65c4}
+.field :is(input,textarea)::placeholder,.shop-fields :is(input,textarea)::placeholder{color:#aa91bf}
+input[type=date]{color-scheme:dark}
+.divider{background:#623981}
+.upload-copy>span,.toggle-line span,.color-row small,.below-editor,.shop-empty,.shop-manager .shop-head p{color:#c3afd8}
+.upload-button{background:#61237f;color:#ffe1f6;border:1px solid #9b52ae}
+.plain-button{color:#ff9de1}
+.upload-preview{background:linear-gradient(120deg,#7230bc,#ed45b9);color:#fff}
+.toggle-line i{background:#613f7b}
+.toggle-line input:checked+i{background:#e448b1}
+.toggle-line input:focus-visible+i{outline:3px solid #ff9adb}
+.color-row,.category-row,.shop-record,.shop-profile-section,.shop-gallery-section,.shop-gallery-edit-card{background:#2d194b;border-color:#70428a;color:#f7ecff}
+.category-row input[type=text],.shop-gallery-edit-body textarea{background:#1c102f;color:#f7ebff;border-color:#78499d}
+.cat-switch{color:#e5caf6}
+.arrow-controls button{background:#43245e;color:#f4cdff;border-color:#9958b5}
+.tip,.shop-coordinate-guide{background:#351c50;border:1px solid #7f4da1;color:#e1c9f0}
+.shop-coordinate-guide a{color:#ff92d9}
+.shop-record:hover{background:#42235e;border-color:#e170d2}
+.shop-record-copy small,.shop-record-sub small,.shop-images p,.shop-profile-section p,.shop-gallery-section p,.shop-image-help{color:#d2bfe5}
+.shop-status.shop-active{background:#126245;color:#b7f4da}
+.shop-status.shop-paused{background:#6b471b;color:#ffe6b1}
+.shop-status.shop-draft{background:#4d3965;color:#e3d0fb}
+.shop-featured{background:#a9447d;color:#fff}
+.shop-record-thumb,.shop-profile-preview,.shop-gallery-edit-thumb{background:#190e31;border-color:#9651b1}
+.shop-profile-preview img,.shop-record-thumb img,.shop-gallery-edit-thumb img{background:#190e31;object-fit:contain}
+.shop-photo-remove{background:#ed4486;color:#fff}
+.shop-address-results{background:#2a1744;border-color:#8652a3}
+.shop-address-results button{background:#1b102e;color:#f7e9ff;border-color:#844ba2}
+.shop-address-results p{color:#d0b7e3}
+.shop-pin-map{border-color:#8c4caf;background:#efeef0}
+.shop-gallery-edit-body strong{color:#ffc1ef}
+.shop-gallery-edit-actions button{background:#4c2b69;color:#fff;border-color:#8a4ba2}
+.preview-heading strong{color:#f4ebff}
+.preview-heading span{color:#cfb2e7}
+.preview-badge{color:#ff91da!important}
+.phone{background:#381457;box-shadow:0 24px 55px #230844a0}
+.phone-top{background:#160a30;color:#fff}
+.preview-page{background:#100a24;color:#f8f2ff}
+.preview-hero{background:linear-gradient(122deg,#71209b,#b02ca2)!important;border:1px solid #dc65d2}
+.preview-cta{background:var(--admin-gradient)!important;color:white!important}
+.preview-kicker{color:#ff9bdf}
+.preview-chips span{border:1px solid #784297;background:#352053;color:#f4e3ff}
+.preview-chips span:first-child{background:var(--admin-gradient)}
+.preview-place{background:linear-gradient(125deg,#4f205d,#3c227a);border:1px solid #c55bd0;border-radius:12px;color:#f8eaff}
+.preview-emoji{background:linear-gradient(120deg,#e94da7,#903be7);color:white}
+.preview-tabs{background:#24133d;border-color:#68428a;color:#e9c5f6}
+.shop-toast{color:#ff9ee7}
+@media(max-width:730px){.sidebar{border-right:0;border-bottom:1px solid #7e38ab}}
+
+/* Category emojis are optional; keep the empty field visually discoverable. */
+.category-emoji-tip{font-size:12px;color:#c9b6dc;margin:0 0 3px;line-height:1.5}
+.cat-emoji::placeholder{color:#9f85b6;font-size:10px}
+
+/* Quick boost controls in the Admin Studio: one top placement at a time. */
+.shop-record-row{margin:10px 0;display:flex;flex-direction:column;gap:6px}
+.shop-record-row .shop-record{margin:0}
+.shop-boost-button{
+  align-self:stretch;background:linear-gradient(105deg,#5b247b,#b6349e);
+  border:1px solid #b974ce;color:#ffebfa;border-radius:11px;
+  font-size:12px;font-weight:800;padding:9px 12px;cursor:pointer;
+}
+.shop-boost-button:hover:not(:disabled){filter:brightness(1.16)}
+.shop-boost-button:focus-visible{outline:2px solid #ff92e0;outline-offset:2px}
+.shop-boost-button:disabled{opacity:.5;cursor:not-allowed}

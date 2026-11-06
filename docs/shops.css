@@ -1,0 +1,78 @@
+.shop-manager{width:100%;padding:24px 30px 40px;min-width:0;color:#1f322d}.shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:25px}.shop-head h2{font-size:25px;letter-spacing:-.7px;margin:5px 0}.shop-head p{color:#688074;font-size:13px}.shop-layout{display:grid;grid-template-columns:minmax(240px,330px) minmax(0,1fr);gap:22px;align-items:start}.shop-list,.shop-form{border:1px solid #e0e9e3;background:white;border-radius:19px;padding:20px;box-shadow:0 5px 22px #10221b09;min-width:0}.shop-list h3,.shop-form h3{font-size:16px;margin:0 0 16px}.shop-form-header{display:flex;justify-content:space-between;align-items:center;gap:12px}.shop-record{width:100%;text-align:left;background:#f7faf8;border:1px solid #e1eee8;display:block;border-radius:14px;margin:10px 0;padding:11px;cursor:pointer}.shop-record:hover{border-color:#76ae8e;background:#eff9f3}.shop-record-main{display:flex;gap:10px;align-items:center}.shop-record-thumb{display:grid;place-items:center;width:54px;height:54px;flex:none;background:#e1f3e8;border-radius:10px;overflow:hidden}.shop-record-thumb img{height:100%;width:100%;object-fit:cover}.shop-record-copy{min-width:0}.shop-record-copy strong{display:block;font-size:13px}.shop-record-copy small{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#759083;margin-top:4px;font-size:11px}.shop-record-sub{margin-top:9px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.shop-status,.shop-featured{font-size:9px;font-weight:800;padding:4px 7px;border-radius:8px}.shop-active{background:#dff8e7;color:#1e7445}.shop-paused{background:#fef2d5;color:#a47411}.shop-draft{background:#ecf0f3;color:#596a71}.shop-featured{background:#fff1cf;color:#a06c02}.shop-record-sub small{font-size:10px;color:#789082}.shop-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.shop-fields .field{min-width:0}.shop-fields .field span{font-size:11px;font-weight:800;color:#466254;display:block;margin-bottom:7px}.shop-fields input:not([type=checkbox]),.shop-fields select,.shop-fields textarea{width:100%;border:1px solid #d7e4dd;border-radius:10px;padding:10px 12px;font:inherit;font-size:12px;box-sizing:border-box;background:#fbfdfa;color:#20392f}.shop-fields textarea{resize:vertical}.shop-fields .full{grid-column:1/-1}.shop-coordinate-guide{background:#f0f9f5;border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:#45695d;font-size:11px;line-height:1.5}.shop-coordinate-guide a{font-weight:800;color:#16684b}.shop-coordinate-guide button{white-space:nowrap}.shop-images{margin:20px 0}.shop-images h4{font-size:13px;margin:0 0 5px}.shop-images p{font-size:11px;color:#698174}.shop-photo{display:inline-block;position:relative;margin:6px 6px 8px 0;width:75px;height:75px}.shop-photo img{width:100%;height:100%;object-fit:cover;border-radius:12px}.shop-photo-remove{position:absolute;right:-4px;top:-4px;width:23px;height:23px;border-radius:50%;border:0;background:#a02e38;color:white;cursor:pointer}.shop-photo-counter{font-size:10px;color:#668476;margin-left:10px}.shop-form-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.shop-toast{font-size:12px;color:#19684c;margin-top:15px}.shop-empty,.shop-error{font-size:12px;line-height:1.6;color:#789183}.shop-error{color:#b43636}.editor-grid.editing-shops{display:block}.shop-manager .save-button{cursor:pointer}.shop-manager .plain-button{cursor:pointer}@media(max-width:900px){.shop-layout{grid-template-columns:1fr}}@media(max-width:620px){.shop-manager{padding:20px 16px}.shop-fields{grid-template-columns:1fr}.shop-coordinate-guide{flex-direction:column;align-items:start}.shop-head h2{font-size:22px}}
+
+/* Address-to-pin workflow: free OpenStreetMap map and low-volume address lookup. */
+.shop-address-results{display:flex;flex-direction:column;gap:7px;padding:10px;border:1px solid #cfe2d5;border-radius:12px;background:#f7fbf8}
+.shop-address-results[hidden]{display:none!important}
+.shop-address-results button{background:#fff;color:#1e4c39;text-align:left;display:block;border:1px solid #d5e7dc;padding:10px 12px;border-radius:8px;font-size:12px;cursor:pointer}
+.shop-address-results button:hover{border-color:#3e956e}
+.shop-address-results p{font-size:12px;color:#63766e;margin:4px}
+.shop-pin-map{grid-column:1/-1;width:100%;height:245px;border-radius:13px;border:1px solid #d4e3da;overflow:hidden;background:#edf6ef}
+.shop-pin-map .leaflet-container{font-family:inherit}
+.shop-pin-map .leaflet-control-attribution{font-size:9px}
+
+/* Profile image and twenty captioned gallery images */
+.shop-profile-section,.shop-gallery-section{border:1px solid #e0e9e3;border-radius:14px;padding:15px;margin:12px 0 18px;background:#fbfdfa}
+.shop-profile-preview{width:116px;height:116px;border-radius:16px;border:1px dashed #bcd6c7;background:#eff7f1;display:grid;place-items:center;overflow:hidden;margin:12px 0}
+.shop-profile-preview img{width:100%;height:100%;object-fit:cover}
+.shop-profile-preview p{text-align:center;padding:12px;margin:0;font-size:11px}
+.shop-media-count{font-size:10px;color:#177555;margin-left:8px;white-space:nowrap}
+.shop-image-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px}
+.shop-image-actions .plain-button:disabled{opacity:.45;cursor:not-allowed}
+.shop-gallery-editor{display:grid;gap:12px}
+.shop-gallery-edit-card{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;border:1px solid #d8e6dd;background:#fff;border-radius:12px;padding:12px}
+.shop-gallery-edit-thumb img{display:block;width:100px;height:100px;object-fit:cover;border-radius:10px}
+.shop-gallery-edit-body{min-width:0}
+.shop-gallery-edit-body strong{display:block;font-size:11px;margin-bottom:7px;color:#305a47}
+.shop-gallery-edit-body textarea{box-sizing:border-box;display:block;width:100%;resize:vertical;padding:10px;border:1px solid #d1e1d6;border-radius:9px;font:inherit;font-size:12px;color:#244634;background:#fafffb}
+.shop-gallery-edit-actions{display:flex;gap:7px;justify-content:flex-end;margin-top:7px}
+.shop-gallery-edit-actions button{border:1px solid #d5e5d9;border-radius:8px;padding:6px 10px;background:#f3faf5}
+.shop-gallery-edit-actions button:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:540px){.shop-gallery-edit-card{grid-template-columns:76px minmax(0,1fr)}.shop-gallery-edit-thumb img{width:76px;height:88px}}
+
+/* Give Leaflet a measurable viewport when the Shop Manager form is opened. */
+#shopPinMap { position:relative; display:block; width:100%; min-width:0; min-height:245px; }
+
+/* Image auto-fit: square profile photos and complete (uncropped) gallery previews. */
+.shop-profile-preview{aspect-ratio:1/1; height:auto;}
+.shop-profile-preview img{display:block; width:100%;height:100%;object-fit:contain;object-position:center;background:#f7faf8}
+.shop-record-thumb img{display:block;max-width:100%;max-height:100%;object-fit:contain;object-position:center;background:#f7faf8}
+.shop-gallery-edit-thumb{display:grid;place-items:center;background:#f2f6f3;border-radius:10px;overflow:hidden;min-width:0}
+.shop-gallery-edit-thumb img{width:100px;height:100px;max-width:100%;object-fit:contain;object-position:center}
+@media(max-width:540px){.shop-gallery-edit-thumb img{width:76px;height:88px;object-fit:contain}}
+.shop-image-help{font-size:11px;color:#57766a;line-height:1.5;margin:7px 0 12px}
+
+/* NearMe v1.0 — Square shop profile in Admin Studio.
+   Never stretch or crop; gallery photos keep their existing layout. */
+.shop-manager .shop-profile-preview {
+  box-sizing: border-box;
+  width: 116px;
+  height: 116px;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f2f7f4;
+}
+.shop-manager .shop-profile-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.shop-manager .shop-record-thumb {
+  box-sizing: border-box;
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  flex: 0 0 54px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f2f7f4;
+}
+.shop-manager .shop-record-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#100A24">
+  <meta name="robots" content="noindex,nofollow">
+  <title>NearMe · Design Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="./shops.css?v=square-profile-20261103">
+  <link rel="stylesheet" href="./admin-nightlife.css?v=boost-1">
+  <link rel="stylesheet" href="./team.css?v=visitor-access-1">
+  <link rel="stylesheet" href="./visitors.css?v=1">
+  <script src="https://telegram.org/js/telegram-web-app.js?64"></script>
+  <link rel="stylesheet" href="./language.css?v=i18n-1">
+</head>
+<body>
+  <section class="locked" id="gate"><div class="nearme-locked-language"><label class="nearme-language" data-nearme-no-translate><span class="nearme-language-caption">🌐</span><select data-nearme-language aria-label="Language / 语言"><option value="en-US">English (US)</option><option value="zh-CN">简体中文</option></select></label></div>
+    <div class="lock-icon">✦</div>
+    <h1>NearMe Gradient Studio</h1>
+    <p id="gateText">Checking your Telegram staff access…</p>
+    <div class="gate-help">Staff can open this page through their Telegram bot's <strong>/admin</strong> button, or <a href="./">log in on the NearMe website</a> with Telegram and return here. Access is determined by the Primary Owner's team permissions.</div>
+  </section>
+  <div id="studio" class="studio" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="#brand"><span class="brand-icon">✳</span><span>nearme<span class="brand-light">studio</span><small>GRADIENT DESIGN STUDIO</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Design sections">
+        <button class="nav-link active" data-section="brand" type="button"><span>◈</span> Brand identity</button>
+        <button class="nav-link" data-section="appearance" type="button"><span>◐</span> Appearance</button>
+        <button class="nav-link" data-section="hero" type="button"><span>▧</span> Hero & banners</button>
+        <button class="nav-link" data-section="layout" type="button"><span>▦</span> Navigation & search</button>
+        <button class="nav-link" data-section="categories" type="button"><span>☷</span> Categories</button>
+        <button class="nav-link" data-section="shops" type="button"><span>▣</span> Shop Manager</button>
+        <button class="nav-link" data-section="visitors" type="button"><span>◉</span> Live visitors</button>
+        <button class="nav-link" data-section="team" type="button"><span>♧</span> Team & access</button>
+      </nav>
+      <div class="side-bottom"><span class="online-dot"></span> Authenticated with Telegram<br><small id="staffRoleLabel">Checking permissions…</small></div>
+    </aside>
+    <main class="workspace">
+      <header class="workspace-header">
+        <div><span class="kicker">YOUR MINI APP / DESIGN SETTINGS</span><h1>Create your nightlife look<span class="sparkle">✳</span></h1><p>Change the look and feel. Preview instantly. Publish with one click.</p></div>
+        <div class="header-actions"><label class="nearme-language" data-nearme-no-translate><span class="nearme-language-caption">🌐</span><select data-nearme-language aria-label="Language / 语言"><option value="en-US">English (US)</option><option value="zh-CN">简体中文</option></select></label><span class="state-chip" id="saveState">All changes saved</span><button class="save-button" type="button" id="saveButton">Publish changes <span>↗</span></button></div>
+      </header>
+      <div class="editor-grid">
+        <div id="shopManager" class="shop-manager" hidden>
+          <header class="shop-head"><div><span class="kicker">ADVERTISEMENT LISTINGS</span><h2>Shop Manager</h2><p>Add advertisements manually. Customers contact shops directly through WhatsApp or Telegram; no payments or bookings are handled by NearMe.</p></div><button type="button" id="newShop" class="save-button">+ New shop</button></header>
+          <div class="shop-layout"><div class="shop-list"><h3>My shop listings</h3><div id="shopRecords">Loading…</div></div>
+          <form id="shopForm" class="shop-form" hidden>
+            <div class="shop-form-header"><h3 id="shopFormTitle">New shop</h3><button class="plain-button" type="button" id="cancelShop">Close</button></div>
+            <div class="shop-fields">
+              <label class="field"><span>Shop name *</span><input name="name" maxlength="110" required placeholder="Example: Jasmine Coffee"></label>
+              <label class="field"><span>Category *</span><select name="category" required><option value="">Choose a category</option></select></label>
+              <label class="field full"><span>Shop description</span><textarea name="description" maxlength="1200" rows="3" placeholder="Tell visitors what this business offers"></textarea></label>
+              <label class="field full"><span>Street address *</span><input name="address" maxlength="240" required placeholder="Street, town, state"></label>
+              <div class="shop-coordinate-guide full"><span>📍 Enter the shop owner’s address, then select <strong>Find address</strong>. You can fine-tune the location by dragging the map pin. This also works for shops not listed as Google businesses.</span><button id="shopFindAddress" type="button" class="plain-button">Find address</button></div>
+              <div id="shopMatches" class="shop-address-results full" hidden aria-live="polite"></div>
+              <div id="shopPinMap" class="shop-pin-map full" aria-label="Pin the shop on the map"></div>
+              <div class="shop-coordinate-guide full"><span>When an address has no matching result, click the correct point on the map or copy GPS coordinates from Google Maps. Double-check the pin before publishing.</span><button id="shopUseGPS" type="button" class="plain-button">Use my current location</button></div>
+              <label class="field"><span>Latitude *</span><input name="lat" type="number" step="any" min="-90" max="90" required placeholder="Select a result or pin"></label>
+              <label class="field"><span>Longitude *</span><input name="lon" type="number" step="any" min="-180" max="180" required placeholder="Select a result or pin"></label>
+              <label class="field"><span>Price / offer label</span><input name="price" maxlength="70" placeholder="From RM 59"></label>
+              <label class="field"><span>WhatsApp (international)</span><input name="whatsapp" maxlength="20" placeholder="+60123456789"></label>
+              <label class="field full"><span>Telegram group / channel URL</span><input name="telegram_url" maxlength="160" placeholder="https://t.me/YourShopChannel"></label>
+              <label class="field"><span>Advertisement status</span><select name="status"><option value="draft">Draft (hidden)</option><option value="pending">Pending Review (hidden)</option><option value="active">Active (public)</option><option value="paused">Paused (hidden)</option></select></label>
+              <label class="field"><span>Expiry date (optional)</span><input name="expires_on" type="date"></label>
+              <label class="check-field full"><input name="featured" type="checkbox"> Boost this shop to the top (one at a time; active shops only)</label>
+            </div>
+            <div class="shop-images">
+              <section class="shop-profile-section" aria-label="Shop profile image">
+                <h4>Shop profile image <span class="shop-media-count">1 image</span></h4>
+                <p>This is the main image shown on the shop card. JPG/PNG/WebP, up to 5 MB.</p>
+                <div id="shopProfilePreview" class="shop-profile-preview" aria-live="polite"></div>
+                <p class="shop-image-help">Automatically fitted to a 1:1 square (900 × 900 px) with padding when needed. No cropping or stretching.</p>
+                <div class="shop-image-actions"><label class="upload-button">↑ Upload / replace profile image<input id="shopProfilePhoto" type="file" accept="image/png,image/jpeg,image/webp" hidden></label><button id="shopRemoveProfile" type="button" class="plain-button">Remove profile image</button></div>
+              </section>
+              <section class="shop-gallery-section" aria-label="Shop gallery images">
+                <h4>Additional gallery images <span class="shop-media-count">Up to 20 images</span></h4>
+                <p>Write an optional description for each photo (up to 300 characters). Gallery photos appear with descriptions for customers. Dragging isn't needed: use the ↑/↓ buttons to reorder.</p>
+                <div id="shopGalleryList" class="shop-gallery-editor"></div>
+                <p class="shop-image-help">Gallery images automatically resize to fit, keeping their full proportions. Up to 20 images with individual descriptions.</p>
+                <div class="shop-image-actions"><label class="upload-button">↑ Upload gallery images<input id="shopGalleryPhotos" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></label><span id="shopGalleryCounter" class="shop-photo-counter">0 / 20 gallery photos</span></div>
+              </section>
+            </div>
+            <p id="shopEditNotice" class="shop-image-help" hidden></p>
+            <div class="shop-form-actions">
+              <button id="saveShop" class="save-button" type="submit">Save shop</button>
+              <button id="reviewShopEdit" type="button" class="plain-button" hidden>Review pending edits</button>
+              <button id="approveShopEdit" type="button" class="save-button" hidden>Approve edits</button>
+              <button id="rejectShopEdit" type="button" class="plain-button" hidden>Reject edits</button>
+              <button id="deleteShop" type="button" class="plain-button" hidden>Delete shop</button>
+            </div>
+          </form></div>
+          <div id="shopToast" class="shop-toast" role="status" aria-live="polite"></div>
+        </div>
+        <section id="liveVisitorsManager" class="visitor-section" hidden aria-label="Real-time visitor dashboard">
+          <div class="visitor-stats-shell">
+            <div class="kicker">NEARME · PRIVATE LIVE ACTIVITY</div><h2 class="visitor-stats-title">Visitor Activity Dashboard</h2>
+            <p class="visitor-stats-sub">For authorized Owner and Admin accounts. “Online” means a signed-in NearMe visitor had activity within the last 2 minutes. This does not show their Telegram-wide online status.</p>
+            <div class="visitor-stat-grid">
+              <div class="visitor-stat"><strong id="visitorActiveNow">—</strong><span>Active now (estimate)</span></div>
+              <div class="visitor-stat"><strong id="visitorLoginToday">—</strong><span>Members with login today (MYT)</span></div>
+              <div class="visitor-stat"><strong id="visitorTotal">—</strong><span>Total recorded visitors</span></div>
+            </div>
+            <p class="visitor-stats-sub" id="visitorUpdated">Connecting to activity service…</p>
+            <p id="visitorLiveError" role="alert" hidden></p>
+            <div class="visitor-list-panel"><h3>Active NearMe visitors</h3><div id="visitorOnlineList">Loading…</div></div>
+            <div class="visitor-list-panel"><h3>Recent logins / logouts</h3><div id="visitorLoginList">Loading…</div></div>
+          </div>
+        </section>
+        <section id="teamManager" class="team-manager" hidden aria-label="Team and access management">
+          <header class="shop-head"><div><span class="kicker">PRIMARY OWNER ONLY</span><h2>Team & Access</h2><p>Add multiple administrators and content moderators by numeric Telegram ID. Only the Owner controls staff access. Removing or suspending access takes effect on the next request.</p></div></header>
+          <div class="team-layout">
+            <form id="teamAddForm" class="team-surface">
+              <h3>Add team member</h3>
+              <label class="field"><span>Telegram numeric user ID *</span><input id="teamUserId" type="text" inputmode="numeric" pattern="[0-9]+" placeholder="Use /myid" required></label>
+              <label class="field"><span>Role</span><select id="teamRole"><option value="admin">Administrator</option><option value="moderator">Content Moderator</option></select></label>
+              <label class="field"><span>Internal note (optional)</span><input id="teamNote" maxlength="120" placeholder="Staff member's label"></label>
+              <div class="team-permission-header">Permission settings (customize for each account)</div><div id="teamNewPermissions"></div>
+              <button class="save-button" type="submit" id="teamAddButton">+ Add team member</button>
+              <p class="team-explain">Team members must sign in with their own Telegram accounts. Only the Primary Owner can grant, suspend, or revoke roles.</p>
+            </form>
+            <div class="team-surface"><h3>Team members</h3><div id="teamMembers" aria-live="polite">Loading…</div></div>
+            <div class="team-surface team-audit"><h3>Activity history</h3><p class="team-explain">Last 100 team actions, including shop changes, approvals, and boosts.</p><div id="teamAudit">Loading…</div></div>
+          </div>
+        </section>
+        <div class="editor">
+          <section class="editor-panel" id="panel-brand">
+            <div class="panel-title"><span class="panel-icon">◈</span><div><h2>Brand identity</h2><p>Make a first impression that feels like your business.</p></div></div>
+            <div class="form-grid">
+              <label class="field"><span>App name</span><input type="text" id="appName" maxlength="40" placeholder="NearMe"></label>
+              <label class="field"><span>Tagline</span><textarea id="tagline" maxlength="170" rows="3" placeholder="Discover amazing places around you."></textarea></label>
+            </div>
+            <div class="divider"></div>
+            <div class="upload-area"><div class="upload-copy"><strong>Brand logo</strong><span>Use a PNG, JPEG or WebP image. Transparent backgrounds work best. Up to 5 MB.</span><div class="upload-actions"><label class="upload-button">↑ Upload logo<input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></label><button id="removeLogo" class="plain-button" type="button">Remove</button></div></div><div class="upload-preview" id="logoPreview">✳</div></div>
+          </section>
+          <section class="editor-panel" id="panel-appearance" hidden>
+            <div class="panel-title"><span class="panel-icon">◐</span><div><h2>Appearance</h2><p>Build a cohesive palette for your Mini App.</p></div></div>
+            <label class="toggle-line"><div><strong>Dark mode</strong><span>Start visitors with a sleek dark appearance</span></div><input id="darkMode" type="checkbox" role="switch"><i></i></label>
+            <div class="divider"></div>
+            <div class="color-grid"><label class="color-row"><input type="color" id="primary"><span><strong>Primary color</strong><small id="primaryValue">#A32CDB</small></span></label><label class="color-row"><input type="color" id="accent"><span><strong>Accent color</strong><small id="accentValue">#FF5CBD</small></span></label><label class="color-row"><input type="color" id="background"><span><strong>Page background</strong><small id="backgroundValue">#100A24</small></span></label><label class="color-row"><input type="color" id="textColor"><span><strong>Text color</strong><small id="textColorValue">#F8F2FF</small></span></label></div>
+            <div class="tip">Tip: Use light text on a dark background, or dark text on a light background. The preview updates instantly.</div>
+          </section>
+          <section class="editor-panel" id="panel-hero" hidden>
+            <div class="panel-title"><span class="panel-icon">▧</span><div><h2>Hero & banners</h2><p>Welcome visitors with your message and imagery.</p></div></div>
+            <label class="field"><span>Small heading</span><input id="eyebrow" maxlength="70"></label>
+            <div class="two-fields"><label class="field"><span>Main headline</span><input id="heroTitle" maxlength="60"></label><label class="field"><span>Highlighted headline</span><input id="heroHighlight" maxlength="80"></label></div>
+            <label class="field"><span>Description</span><textarea id="heroDescription" maxlength="230" rows="3"></textarea></label>
+            <label class="field"><span>Location button text</span><input id="cta" maxlength="38"></label>
+            <div class="divider"></div>
+            <div class="upload-area"><div class="upload-copy"><strong>Hero background image</strong><span>Use a landscape image for the best results. Dark overlay is added automatically.</span><div class="upload-actions"><label class="upload-button">↑ Upload banner<input id="bannerFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></label><button id="removeBanner" class="plain-button" type="button">Remove</button></div></div><div class="upload-preview banner-preview" id="bannerPreview">▧</div></div>
+          </section>
+          <section class="editor-panel" id="panel-layout" hidden>
+            <div class="panel-title"><span class="panel-icon">▦</span><div><h2>Navigation & search</h2><p>Choose which features visitors can explore.</p></div></div>
+            <div class="tip">The interactive map uses OpenStreetMap tiles. Customer directions open in Google Maps using free links — no Google Cloud key or billing account required.</div>
+            <label class="toggle-line"><div><strong>Show Map tab</strong><span>Allow visitors to switch to the interactive shop map</span></div><input id="showMap" type="checkbox" role="switch"><i></i></label>
+            <label class="toggle-line"><div><strong>Show Saved tab</strong><span>Allow visitors to bookmark shops on their device</span></div><input id="showSaved" type="checkbox" role="switch"><i></i></label>
+            <div class="divider"></div>
+            <label class="field"><span>Search bar placeholder</span><input id="searchPlaceholder" maxlength="75"></label>
+            <label class="field"><span>Default nearby search radius</span><select id="defaultRadius"><option value="1000">1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select></label>
+            <div class="tip">Location access remains optional and visitor-driven. These settings change the interface, not the security permissions.</div>
+          </section>
+          <section class="editor-panel" id="panel-categories" hidden>
+            <div class="panel-title"><span class="panel-icon">☷</span><div><h2>Discover categories</h2><p>Change names, optional emojis, visibility, and display order.</p></div></div>
+            <div class="category-toolbar">
+              <div><strong>Create your own shop categories</strong><p>Examples: Massage, Coffee, Car Wash. Emojis are optional. Add up to 60 categories.</p></div>
+              <button id="addCategory" class="plain-button category-add" type="button">+ Add category</button>
+            </div>
+            <p class="category-emoji-tip">You can leave the emoji field blank for a clean, text-only category.</p>
+            <div class="categories-editor" id="categoryEditor"></div>
+            <div class="tip">Publish new categories before assigning shops in Shop Manager. Hiding a category chip does not hide its shops from “All places.” To delete a category with shops, first reassign those shops.</div>
+          </section>
+          <div class="below-editor"><span>✦</span> Your edits are private until you press <b>Publish changes</b>.</div>
+        </div>
+        <aside class="preview-column">
+          <div class="preview-heading"><div><strong>Live preview</strong><span>How visitors will see your app</span></div><span class="preview-badge">● LIVE</span></div>
+          <div class="phone"><div class="phone-top"><span>9:41</span><span>●●●  ▰</span></div>
+            <div class="preview-page" id="previewPage"><div class="preview-topbar"><div class="preview-logo" id="previewLogo">✳</div><strong id="previewName">NearMe</strong><div class="preview-avatar">A</div></div>
+              <div class="preview-greeting"><small>NEARME AFTER DARK ✳</small><strong>Hello, explorer ✌️</strong></div>
+              <div class="preview-hero" id="previewHero"><div class="preview-overline" id="previewEyebrow">● EXPLORE YOUR NEIGHBORHOOD</div><h2><span id="previewTitle">Great places.</span><br><em id="previewHighlight">Right around you.</em></h2><p id="previewDescription">Find your next favorite coffee, hidden gem or everyday essential.</p><span class="preview-cta" id="previewCTA">📍 Use my location →</span></div>
+              <div class="preview-kicker" id="previewTagline">DISCOVER AMAZING PLACES AROUND YOU.</div><h3>What are you looking for?</h3><div id="previewCategories" class="preview-chips"></div>
+              <div class="preview-list-title">Discover the scene ✦</div><div class="preview-place"><div class="preview-emoji">🌙</div><div><small>LOUNGE · EXAMPLE</small><strong>Aurora Lounge</strong><span>Demo listing · Preview only</span></div></div>
+              <div class="preview-tabs" id="previewTabs"><span>⌂ Discover</span><span data-preview-tab="saved">♡ Saved</span><span data-preview-tab="map">◇ Map</span></div>
+            </div>
+          </div>
+          <div class="preview-caption">Design preview uses fictional example shops. Published advertisements appear to visitors even before GPS is shared; GPS filters nearby ads.</div>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./config.js"></script>
+  <script src="./i18n.js?v=1"></script>
+  <script src="./web-login.js"></script>
+  <script src="./admin.js?v=visitors-1"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./shops.js?v=visitors-1"></script>
+  <script src="./visitors.js?v=1"></script>
+  <script src="./team.js?v=visitors-1"></script>
+</body>
+</html>

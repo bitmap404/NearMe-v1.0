@@ -1,0 +1,40 @@
+/* Fullscreen access gate, matching NearMe Gradient Modern Nightlife identity. */
+#nearmeAuthGate[hidden] { display:none !important; }
+#nearmeAuthGate {
+  position:fixed; inset:0; z-index:99999; overflow-y:auto; display:flex;
+  justify-content:center; align-items:center; padding:32px 20px;
+  background:radial-gradient(ellipse at 85% 5%,#68248f80 0,transparent 48%),
+             radial-gradient(ellipse at 5% 85%,#d73c9e35 0,transparent 46%),#100A24;
+  font-family:'Plus Jakarta Sans','DM Sans',system-ui,sans-serif; color:#F8F2FF;
+}
+.nearme-login-panel {
+  width:min(100%,440px); border:1px solid #b963d856; border-radius:26px;
+  padding:30px 25px; text-align:center;
+  background:linear-gradient(145deg,#372052ec,#1b1035f7 78%);
+  box-shadow:0 24px 85px #07020e90, 0 0 36px #a32cdb1c;
+}
+.nearme-login-logo {
+  width:76px; height:76px; border-radius:21px; margin:0 auto 22px;
+  display:grid; place-items:center; font-size:46px; font-weight:900;
+  color:white; background:linear-gradient(135deg,#FF5CBD 0%,#A32CDB 100%);
+  box-shadow:0 8px 36px #d23dca79;
+}
+.nearme-login-kicker { font-size:10px; letter-spacing:2.5px; font-weight:800; color:#ffa2e1; margin:0 0 10px; }
+.nearme-login-panel h1 {color:#fff; font-size:29px; font-weight:800; line-height:1.24; margin:0 0 12px;}
+.nearme-login-panel p {color:#d9bde9; font-size:13px; line-height:1.75; margin:0 0 24px;}
+#nearmeLoginButton {
+  width:100%; display:flex; justify-content:center; align-items:center; gap:10px;
+  cursor:pointer; padding:17px 16px; border:0; border-radius:14px; color:#fff;
+  background:linear-gradient(105deg,#FF5CBD,#D846D6,#A32CDB);
+  font:800 15px 'Plus Jakarta Sans',system-ui,sans-serif;
+  box-shadow:0 10px 29px #d63ec34b;
+}
+#nearmeLoginButton:disabled {opacity:.62; cursor:wait;}
+.nearme-login-error {color:#ffe5f7 !important; padding:12px; border:1px solid #eb5c98;
+  border-radius:10px; background:#8f245044; margin-top:15px !important; word-break:break-word;}
+.nearme-login-privacy {font-size:11px !important; color:#bc9dcf !important; margin:20px 0 0 !important;}
+.nearme-login-privacy a {color:#ffa1e2; text-decoration:underline;}
+#nearmeLogout {border:1px solid #c786e261; background:#431f63b5; color:#fff;
+ border-radius:12px; font:700 11px system-ui,sans-serif; padding:8px 10px; cursor:pointer;}
+#nearmeLogout[hidden] {display:none !important;}
+@media(max-width:350px) {.nearme-login-panel{padding:24px 18px}.nearme-login-panel h1{font-size:25px}}

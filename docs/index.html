@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#100A24">
+  <meta name="description" content="NearMe — discover your favorite local spots, wherever you are.">
+  <title>NearMe · Discover around you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./team.css?v=visitors-1">
+  <link rel="stylesheet" href="./visitors.css?v=2">
+  <link rel="stylesheet" href="./design.css?v=square-profile-20261103">
+  <link rel="stylesheet" href="./nightlife.css?v=boost-1">
+  <link rel="stylesheet" href="./web-login.css?v=1">
+  <script src="https://telegram.org/js/telegram-web-app.js?64"></script>
+  <link rel="stylesheet" href="./language.css?v=i18n-2">
+</head>
+<body>
+  <svg aria-hidden="true" class="svg-icons" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.7"/></symbol>
+    <symbol id="i-near" viewBox="0 0 24 24"><path d="m4 11 16-7-7 16-2.5-6.5L4 11Z"/><path d="m10.5 13.5 4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="M6 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M6 13V8a3 3 0 0 1 3-3h3m6 6v5a3 3 0 0 1-3 3h-4"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.7 8.1c0 4.6-8.7 10-8.7 10s-8.7-5.4-8.7-10a4.7 4.7 0 0 1 8.7-2.4 4.7 4.7 0 0 1 8.7 2.4Z"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5ZM9 3v16m6-14v16"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-9Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 10h18m-11-7v18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9a8 8 0 0 1 13-2L20 12M4 12l1.5 5a8 8 0 0 0 13-2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h14v7a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6V8Zm14 1h2a3 3 0 0 1 0 6h-2M7 2v3m5-3v3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"/></symbol>
+  </svg>
+
+  <div id="nearmeAuthGate" role="dialog" aria-modal="true" aria-labelledby="nearmeLoginTitle">
+    <section class="nearme-login-panel">
+      <div class="nearme-login-language"><label class="nearme-language" data-nearme-no-translate><span class="nearme-language-caption">🌐</span><select data-nearme-language aria-label="Language / 语言"><option value="en-US">English (US)</option><option value="zh-CN">简体中文</option></select></label></div><div class="nearme-login-logo" aria-hidden="true">N</div>
+      <div class="nearme-login-kicker">NEARME · MALAYSIA</div>
+      <h1 id="nearmeLoginTitle">Discover your scene.</h1>
+      <p>Explore Malaysia's nightlife, lounges, KTV, wellness and lifestyle destinations. Sign in securely with your Telegram account to continue.</p>
+      <button type="button" id="nearmeLoginButton">✈ Continue with Telegram</button>
+      <p id="nearmeLoginError" class="nearme-login-error" role="alert" hidden></p>
+      <p class="nearme-login-privacy">No separate password required. <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy notice</a></p>
+    </section>
+  </div>
+
+  <div class="shell" id="nearmeAppShell" inert>
+    <header class="topbar">
+      <a class="brand" href="#explore" aria-label="NearMe home"><span class="brand-mark" id="brandLogo"><svg><use href="#i-pin"/></svg></span><span id="brandName">NearMe<span class="brand-dot">.</span></span></a>
+      <div class="topbar-right"><a id="nearmeStaffLink" href="./admin.html" hidden>Admin Studio</a><button id="nearmeLogout" type="button" hidden>Log out</button><span id="demoBadge" class="top-demo" hidden>DEMO</span><div class="nearme-profile-actions"><label id="discoverLanguageControl" class="nearme-language" data-nearme-no-translate><span class="nearme-language-caption" aria-hidden="true">🌐</span><select data-nearme-language aria-label="Language / 语言"><option value="en-US">English (US)</option><option value="zh-CN">简体中文</option></select></label><div id="avatar" class="avatar" title="Telegram account">?</div></div></div>
+    </header>
+
+    <main class="main" id="explore">
+      <div class="greeting"><div><div class="eyebrow">NEARME AFTER DARK <span class="eyebrow-star">✦</span></div><p id="hello">Hello, explorer <span class="wave">✌️</span></p></div><span class="date-pill" id="today">Today</span></div>
+
+      <section class="hero">
+        <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+        <div class="hero-content">
+          <span class="hero-overline"><span class="live-dot"></span><span id="heroEyebrow">EXPLORE YOUR NEIGHBORHOOD</span></span>
+          <h1><span id="heroTitle">Great places.</span><br><em id="heroHighlight">Right around you.</em></h1>
+          <p id="heroDescription">Find your next favorite coffee, hidden gem or everyday essential — just a few steps away.</p>
+          <button class="locate-btn" id="locationBtn"><span class="locate-icon"><svg><use href="#i-near"/></svg></span><span id="locationBtnText">Use my location</span><svg class="locate-arrow"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="map-dot dot-a">☕</span><span class="map-dot dot-b">🛍️</span><span class="map-dot dot-c">🍜</span><span class="center-pin"><svg><use href="#i-pin"/></svg></span><span class="art-spark">✳</span></div>
+      </section>
+
+      <div class="location-status" id="locationStatus"><div class="status-indicator"><svg><use href="#i-shield"/></svg></div><div><strong>Your privacy matters</strong><span>We record signed-in Telegram visits. GPS is optional and requested only after you tap the location button. <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Details</a></span></div></div>
+
+      <section class="discover" id="discover">
+        <div class="section-heading"><div><div class="section-kicker" id="discoveryTagline">DISCOVER AMAZING PLACES AROUND YOU</div><h2>What are you looking for?</h2></div><span class="sun-icon">✳</span></div>
+        <div class="categories" id="categories" role="group" aria-label="Filter shops"></div>
+      </section>
+
+      <section id="visitorDashboardSection" hidden aria-labelledby="visitorDashboardTitle">
+        <div class="visitor-stats-shell">
+          <div class="section-kicker">NEARME · COMMUNITY INSIGHTS</div>
+          <h2 id="visitorDashboardTitle" class="visitor-stats-title">NearMe Visitor Dashboard</h2>
+          <p class="visitor-stats-sub">Explore historical NearMe community activity. Figures are delayed by at least 30 minutes and show totals only, not who's online or any person's identity.</p>
+          <div class="visitor-stat-grid">
+            <div class="visitor-stat"><strong id="visitorPublicTotal">—</strong><span>Total members as of report</span></div>
+            <div class="visitor-stat"><strong id="visitorPublicNew">—</strong><span>New members in last 7 days</span></div>
+            
+          </div>
+          <p id="visitorPublicUpdated" class="visitor-date-note">Loading historical data…</p>
+          
+        </div>
+      </section>
+
+      <section class="results-section">
+        <div class="results-heading"><div><h2 id="sectionTitle">Discover your next favorite spot <span class="title-star">✦</span></h2><p id="subtitle">Your local discoveries begin here.</p></div><button class="radius-button" id="radiusBtn" aria-label="Change search radius"><svg><use href="#i-pin"/></svg><span id="radiusText">2 km</span><svg class="chev"><use href="#i-chevron"/></svg></button></div>
+        <div id="radiusOptions" class="radius-options" hidden><button data-radius="1000">1 km</button><button data-radius="2000" class="selected">2 km</button><button data-radius="5000">5 km</button></div>
+        <p class="advertising-disclosure">Shop listings are business advertisements · Top Pick appears first</p>
+        <div class="shop-scope" role="group" aria-label="Shop distance filter"><button id="allShopsBtn" class="active" type="button" aria-pressed="true">All shops</button><button id="nearbyShopsBtn" type="button" aria-pressed="false" disabled>Nearby only</button></div>
+        <div class="result-tools"><label class="search-box"><svg><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Search local spots..." autocomplete="off" aria-label="Search businesses"></label><div class="view-switch"><button id="listViewBtn" class="selected" aria-label="Show list"><svg><use href="#i-list"/></svg></button><button id="mapViewBtn" aria-label="Show map"><svg><use href="#i-map"/></svg></button></div></div>
+
+        <div id="emptyState" class="empty-state"><div class="empty-graphic"><span>📍</span><i class="ripple ripple-one"></i><i class="ripple ripple-two"></i></div><h3>There's more nearby than you think.</h3><p>Tap <b>Use my location</b> to find real places around you, or explore a sample preview.</p><button id="sampleBtn" class="sample-btn">Preview the app <svg><use href="#i-arrow"/></svg></button></div>
+        <div id="resultList" class="result-list" hidden></div>
+        <div id="mapPanel" class="map-panel" hidden><div id="map"></div><div class="map-note"><svg><use href="#i-pin"/></svg> Map data © OpenStreetMap · Tap a pin, then open Google Maps directions</div></div>
+        <div class="end-note" id="attribution" hidden>Shop advertisements provided by businesses · Distances are approximate</div>
+      </section>
+
+      <div class="footnote"><span>✳</span> Made for curious people and their neighborhoods. <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline">Privacy notice</a></div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button data-tab="explore" class="nav-item active"><svg><use href="#i-home"/></svg><span>Discover</span></button>
+      <button data-tab="saved" class="nav-item"><svg><use href="#i-heart"/></svg><span>Saved</span></button>
+      <button data-tab="map" class="nav-item"><svg><use href="#i-map"/></svg><span>Map</span></button>
+      <button data-tab="visitors" class="nav-item"><svg><use href="#i-shield"/></svg><span>Visitors</span></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./config.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./i18n.js?v=2"></script>
+  <script src="./web-login.js?v=1"></script>
+  <script src="./app.js?v=discover-language-2"></script>
+</body>
+</html>

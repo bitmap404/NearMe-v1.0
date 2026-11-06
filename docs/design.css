@@ -1,0 +1,176 @@
+/* Dynamic, validated settings are applied by app.js; this layer themes the original UI. */
+:root{color-scheme:dark}
+body{background:#101916}
+.brand{color:var(--ink)}
+.brand-mark{background:var(--green);transform:none;overflow:hidden}
+.brand-mark svg{transform:none}
+.brand-mark img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.brand-dot{color:var(--bright)}
+.hero{background-image:linear-gradient(110deg,rgba(9,23,20,.90) 4%,rgba(12,35,30,.72) 64%,rgba(13,49,38,.45)),var(--studio-banner,none);background-size:cover;background-position:center;box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.hero h1 em{color:var(--bright)}
+.locate-btn{background:var(--bright);color:#15231c}
+.locate-icon{background:var(--green)}
+.live-dot{background:var(--bright)}
+.category.active,.directions-btn,.marker-pin{background:var(--green);border-color:var(--green)}
+.nav-item.active,.show-map-btn,.radius-button{color:var(--green)}
+.avatar{color:var(--green)}
+.nav-item[hidden],.favorite-btn[hidden],.view-switch button[hidden]{display:none!important}
+html[data-theme='light']{color-scheme:light}
+html[data-theme='light'] body{background:#e9eeea}
+html[data-theme='light'] .shell{background:var(--bg)}
+html[data-theme='light'] .category,.html-light .place-card{background:#fff}
+html[data-theme='dark']{color-scheme:dark}
+html[data-theme='dark'] body{background:#080e0d}
+html[data-theme='dark'] .shell{background:var(--bg)}
+html[data-theme='dark'] .eyebrow,html[data-theme='dark'] .section-kicker{color:#86b0a1}
+html[data-theme='dark'] .date-pill,html[data-theme='dark'] .view-switch{background:#1c312b;color:#b6c9c1}
+html[data-theme='dark'] .location-status span,html[data-theme='dark'] .results-heading p,html[data-theme='dark'] .place-info p{color:#a4beb3}
+html[data-theme='dark'] .location-status strong{color:var(--ink)}
+html[data-theme='dark'] .status-indicator{background:#244239;color:#b6ead0}
+html[data-theme='dark'] .category,html[data-theme='dark'] .place-card,html[data-theme='dark'] .search-box,html[data-theme='dark'] .map-panel,html[data-theme='dark'] .radius-options{background:#1b3029;border-color:#305044;color:#d9ebe2}
+html[data-theme='dark'] .category.active{background:var(--green);border-color:var(--green);color:#fff}
+html[data-theme='dark'] .radius-button,html[data-theme='dark'] .sample-btn{background:#243e32;border-color:#36584a;color:#c4eddb}
+html[data-theme='dark'] .radius-options button{background:#1b3029;color:#e7efe9}
+html[data-theme='dark'] .radius-options button.selected{background:#285343}
+html[data-theme='dark'] .search-box input{color:#f3fbf7}
+html[data-theme='dark'] .search-box input::placeholder{color:#a1b9af}
+html[data-theme='dark'] .view-switch button{color:#a1b9af}
+html[data-theme='dark'] .view-switch button.selected{background:#386150;color:#fff}
+html[data-theme='dark'] .empty-state{background:#192a24;border-color:#3c5a4d}
+html[data-theme='dark'] .empty-state p{color:#bdcfc6}
+html[data-theme='dark'] .place-tag{background:#2b533f;color:#c7f0d8}
+html[data-theme='dark'] .place-info h3{color:#f1faf4}
+html[data-theme='dark'] .place-distance{color:#bdd0c7}
+html[data-theme='dark'] .favorite-btn{background:#29463b}
+html[data-theme='dark'] .bottom-nav{background:#152820f0;border-color:#335145}
+html[data-theme='dark'] .nav-item{color:#96aea1}
+html[data-theme='dark'] .nav-item.active{color:var(--bright)}
+html[data-theme='dark'] .footnote{color:#a1b8aa}
+@media(min-width:600px){html[data-theme='dark'] body{background:#080e0d}}
+
+/* NearMe advertiser cards / contact actions */
+.place-card.sponsored-card{border-color:#b5dcbb;background:linear-gradient(130deg,#fff,#fafff9)}
+.place-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit}
+.place-image:has(img)::before,.place-image:has(img)::after{display:none}
+.place-topline{flex-wrap:wrap;padding-right:20px}.ad-tag{font-size:9px;font-weight:800;padding:4px 6px;background:#dff4ea;color:#125d45;border:1px solid #bce3ce;border-radius:6px}.featured-tag{font-size:9px;font-weight:800;color:#926006;background:#fff0be;border-radius:6px;padding:4px 6px}
+.shop-price{font-size:12px;color:#12674c;font-weight:850;margin:3px 0 9px}.shop-description{white-space:normal!important;max-height:60px;overflow:hidden;line-height:1.45!important;margin-bottom:7px!important}.shop-gallery{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 10px}.shop-gallery img{width:46px;height:46px;object-fit:cover;border-radius:7px}.shop-contact{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}.shop-contact button{padding:8px 10px;border:0;border-radius:9px;font-size:10px;font-weight:800;cursor:pointer}.contact-whatsapp{background:#21b565;color:white}.contact-telegram{background:#e3f4ff;color:#16709c}.google-map-fallback{height:100%;min-height:300px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:20px;box-sizing:border-box;background:#eef7ef}.google-map-fallback strong{font-size:16px;color:#18523a}.google-map-fallback p{font-size:12px;color:#507565;line-height:1.5}.google-map-fallback a{font-size:12px;color:#176446;font-weight:800;padding:8px;border:1px solid #cae3d4;border-radius:8px;background:white;text-decoration:none}.map-panel #map{min-height:370px}
+
+/* Shop album: captioned gallery and full-size photo viewer */
+.shop-gallery{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;scroll-snap-type:x proximity;margin:7px 0 13px;padding-bottom:7px;scrollbar-width:thin}
+.shop-gallery .shop-gallery-item{flex:0 0 120px;min-width:0;scroll-snap-align:start;margin:0;border:1px solid #dfece3;border-radius:11px;overflow:hidden;background:#f7faf8}
+.shop-gallery .shop-gallery-open{border:0;padding:0;display:block;width:100%;background:none;cursor:zoom-in}
+.shop-gallery .shop-gallery-open img{display:block;width:100%;height:100px;object-fit:cover;border-radius:0}
+.shop-gallery figcaption{padding:7px;font-size:10px;color:#375a49;white-space:normal;overflow-wrap:anywhere;line-height:1.45;max-height:86px;overflow:auto}
+.gallery-lightbox[hidden]{display:none!important}
+.gallery-lightbox{position:fixed;inset:0;z-index:2500;background:rgba(6,18,14,.95);display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
+.gallery-lightbox-inner{position:relative;width:min(100%,680px);max-height:calc(100dvh - 40px);display:flex;flex-direction:column;align-items:center;gap:10px;color:white}
+.gallery-lightbox-inner img{display:block;object-fit:contain;max-height:65dvh;max-width:100%;border-radius:10px}
+.gallery-lightbox .gallery-close{align-self:flex-end;background:#2b423b;color:white;border:0;border-radius:50%;width:36px;height:36px;font-size:24px;cursor:pointer}
+.gallery-lightbox .gallery-caption{text-align:center;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;line-height:1.5;max-height:16dvh;overflow:auto;margin:0}
+.gallery-pager{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;font-size:12px}
+.gallery-pager button{background:#d2f0d4;color:#154e3b;border:0;border-radius:9px;padding:10px;font-weight:700;cursor:pointer}
+.gallery-pager button:disabled{opacity:.4;cursor:not-allowed}
+
+
+/* NearMe v1.0 — clickable shop details; no backend changes required. */
+.place-card[data-shop-id]{cursor:pointer}
+.place-card[data-shop-id]:focus-visible{outline:3px solid var(--bright,#cdf59c);outline-offset:3px}
+.place-actions{flex-wrap:wrap;gap:7px}
+.shop-view-details{border:0;border-radius:9px;padding:9px 11px;background:var(--bright,#cbf394);color:#132b21;font-size:11px;font-weight:800;cursor:pointer}
+.map-popup .map-shop-detail{display:block;width:100%;border:0;border-radius:8px;background:#176b50;color:white;font-weight:700;padding:8px;margin-top:8px;cursor:pointer}
+.shop-detail-overlay[hidden]{display:none!important}
+.shop-detail-overlay{position:fixed;inset:0;z-index:2100;background:rgba(4,17,13,.78);display:flex;align-items:center;justify-content:center;padding:10px;box-sizing:border-box;overscroll-behavior:contain}
+.shop-detail-panel{position:relative;background:#fff;color:#173b2d;width:min(100%,510px);max-height:calc(100dvh - 20px);border-radius:18px;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 20px 80px #0006}
+.shop-detail-close{position:sticky;top:12px;float:right;margin:12px 12px -48px 0;z-index:3;background:rgba(10,32,24,.88);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:25px;cursor:pointer}
+.shop-detail-cover{min-height:180px;height:230px;background:linear-gradient(135deg,#caeecf,#9fd2bb);display:grid;place-items:center;overflow:hidden}
+.shop-detail-cover img{display:block;width:100%;height:100%;object-fit:cover}
+.shop-detail-cover span{font-size:65px}
+.shop-detail-body{padding:20px 20px 26px}
+.shop-detail-category{font-size:11px;font-weight:800;color:#246b50}
+.shop-detail-body h2{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.7px;font-size:23px;line-height:1.25;margin:8px 0 12px;overflow-wrap:anywhere}
+.shop-detail-body h3{font-size:14px;font-weight:800;margin:18px 0 10px}
+.shop-detail-price{font-size:16px;font-weight:800;color:#0c7650}
+.shop-detail-address{font-size:12px;color:#5a7567;line-height:1.6;white-space:normal;overflow-wrap:anywhere}
+.shop-detail-description{font-size:13px;color:#375448;line-height:1.65;white-space:pre-line;overflow-wrap:anywhere}
+.shop-detail-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.shop-detail-photo{margin:0;border:1px solid #d9e7dd;border-radius:10px;overflow:hidden;background:#f3f8f4}
+.shop-detail-photo button{border:0;padding:0;background:none;width:100%;cursor:zoom-in}
+.shop-detail-photo img{display:block;width:100%;height:130px;object-fit:cover}
+.shop-detail-photo figcaption{padding:8px;font-size:11px;line-height:1.5;color:#3c5a49;white-space:pre-line;overflow-wrap:anywhere}
+.shop-detail-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:20px}
+.shop-detail-actions button{border:0;border-radius:10px;padding:12px 9px;font-size:11px;font-weight:800;cursor:pointer}
+.shop-detail-whatsapp{background:#21b565;color:#fff}
+.shop-detail-telegram{background:#d8efff;color:#12587c}
+.shop-detail-directions{background:#155a43;color:#fff}
+.shop-detail-map{background:#e6f5e8;color:#125d43}
+@media(max-width:390px){.shop-detail-actions{grid-template-columns:1fr}.shop-detail-cover{height:190px}.shop-detail-body{padding:16px}.shop-detail-photo img{height:105px}}
+
+/* Keep all sponsored listings in the catalogue after GPS; nearby is opt-in. */
+.shop-scope{display:flex;gap:6px;margin:-4px 0 12px;padding:4px;border-radius:13px;background:rgba(130,155,143,.11);border:1px solid rgba(130,155,143,.2)}
+.shop-scope button{flex:1;border:0;padding:10px 12px;border-radius:9px;background:transparent;color:var(--ink,#e9f7ee);font-size:11px;font-weight:800}
+.shop-scope button.active{background:var(--green,#186d57);color:white;box-shadow:0 4px 12px #0002}
+.shop-scope button:disabled{opacity:.45;cursor:not-allowed}
+.shop-scope button:focus-visible{outline:2px solid var(--bright,#cbf394);outline-offset:2px}
+
+/* Image auto-fit across the customer shop cards, details and lightbox.
+   object-fit: contain preserves the entire photo; it never stretches or crops. */
+.place-image:has(img){background:#f2f7f4!important}
+.place-image img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f2f7f4}
+.shop-gallery .shop-gallery-open{background:#f3f7f4}
+.shop-gallery .shop-gallery-open img{object-fit:contain;object-position:center;background:#f3f7f4}
+.shop-detail-cover{background:#f2f7f4}
+.shop-detail-cover img{object-fit:contain;object-position:center}
+.shop-detail-photo{background:#f2f7f4}
+.shop-detail-photo img{object-fit:contain;object-position:center;background:#f2f7f4}
+.gallery-lightbox-inner img{width:auto;max-width:100%;height:auto;max-height:65dvh;object-fit:contain}
+
+/* NearMe v1.0 — Square shop PROFILE frames (not gallery photos).
+   Keep the whole image visible, centered and proportional. */
+.place-card .place-image {
+  box-sizing: border-box;
+  width: 92px;
+  height: 92px;
+  min-width: 92px;
+  min-height: 0;
+  flex: 0 0 92px;
+  aspect-ratio: 1 / 1;
+  align-self: flex-start;
+  overflow: hidden;
+  background: #f2f7f4;
+}
+.place-card .place-image img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+/* Show profile pictures as SQUARES instead of wide hero banners. */
+.shop-detail-panel .shop-detail-cover {
+  box-sizing: border-box;
+  width: min(240px, calc(100% - 32px));
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  margin: 16px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f2f7f4;
+}
+.shop-detail-panel .shop-detail-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+@media (max-width: 390px) {
+  .place-card .place-image {
+    width: 78px;
+    height: 78px;
+    min-width: 78px;
+    flex-basis: 78px;
+  }
+}

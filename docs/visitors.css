@@ -1,0 +1,29 @@
+/* Visitor reports: Gradient Modern Nightlife edition */
+#liveVisitorsManager,#visitorDashboardSection{color:#F8F2FF}
+.visitor-stats-shell{background:linear-gradient(135deg,#35164e,#1b0d35 65%,#371153);border:1px solid #a32cdb70;border-radius:18px;padding:18px;margin:14px 0 22px;box-shadow:0 10px 32px #100a2465}
+.visitor-stats-title{font-size:22px;margin:0 0 9px;letter-spacing:-.02em;color:#fff}
+.visitor-stats-sub{font-size:13px;line-height:1.6;color:#dec5ee}
+.visitor-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:18px 0}
+.visitor-stat{min-width:0;background:#3e2059;border:1px solid #8a3fac80;border-radius:14px;padding:15px 12px}
+.visitor-stat strong{display:block;font-size:clamp(22px,3vw,34px);font-weight:800;color:#ff87d2;line-height:1.2}
+.visitor-stat span{font-size:12px;color:#ebd3f4;line-height:1.4;display:block;margin-top:5px}
+.visitor-list-panel{background:#24113e;border:1px solid #7441a1;border-radius:14px;padding:15px;margin-top:16px;max-height:340px;overflow:auto}
+.visitor-list-panel h3{color:#fff;font-size:15px;margin:0 0 12px}
+.visitor-person{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid #64407e;color:#fff;font-size:13px}
+.visitor-person:last-child{border-bottom:0}
+.visitor-person small{display:block;margin-top:4px;color:#cbb1df;overflow-wrap:anywhere}
+.visitor-live-chip{background:#1e6247;color:#e3fff2;border-radius:18px;padding:6px 9px;font-size:11px;white-space:nowrap}
+.visitor-date{color:#d8b7e6;font-size:11px;text-align:right}
+.visitor-empty{color:#d6bee4;font-size:13px}
+#visitorLiveError{color:#ffc8db}
+#visitorDashboardSection{max-width:1000px;margin:25px auto}
+#visitorDashboardSection .visitor-stats-shell{margin:0 0 24px}
+#visitorDashboardSection .visitor-date-note{font-size:12px;color:#e6c7f6}
+.visitor-section[hidden],#liveVisitorsManager[hidden],#visitorDashboardSection[hidden]{display:none!important}
+@media(max-width:670px){.visitor-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.visitor-stat{padding:13px 10px}.visitor-person{align-items:flex-start;flex-direction:column;gap:6px}}
+
+/* Ensure the visitor tab can fully replace the discovery view. */
+.hero[hidden],.location-status[hidden],.discover[hidden],.results-section[hidden]{display:none!important}
+
+/* Public visitor summary now uses two aggregate metrics, not yesterday's logins. */
+#visitorDashboardSection .visitor-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
